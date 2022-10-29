@@ -1,0 +1,17 @@
+import pandas as pd
+
+def get_csv(web_link):
+    df = pd.read_csv(web_link)
+    return df
+
+data = get_csv("https://raw.githubusercontent.com/simeonaman/demo/master/my_csv_file.csv")
+
+import matplotlib.pyplot as grp
+
+grp.figure()
+grp.figure(figsize=(12,8))
+grp.title('Segregation',fontsize=25)
+grp.xlabel('Gender', fontsize=20)
+grp.ylabel('Level', fontsize=20)
+type_wise_count=data.groupby(['gender']).size()
+grp.bar(type_wise_count.index,type_wise_count.values)
